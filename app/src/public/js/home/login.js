@@ -2,8 +2,6 @@ const userid = document.querySelector("#userid");
 const userpassword = document.querySelector("#userpassword");
 const loginbutton = document.querySelector("button");
 
-console.log(userid);
-
 loginbutton.addEventListener("click", fnLogin);
 
 function fnLogin() {
@@ -20,5 +18,12 @@ function fnLogin() {
     body: JSON.stringify(req),
   })
     .then((res) => res.json())
-    .then((res) => console.log(res));
+    .then((res) => {
+      if (res.success) {
+        location.href = "/";
+      } else {
+        alert(res.msg);
+      }
+    })
+    .catch((e) => console.error(new Error("Login Error")));
 }

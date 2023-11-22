@@ -1,7 +1,4 @@
-const users = {
-  userid: ["a", "b", "c"],
-  userpassword: ["1234", "2345", "3456"],
-};
+const User = require("../../models/User");
 
 const output = {
   home: (req, res) => {
@@ -10,26 +7,21 @@ const output = {
   login: (req, res) => {
     res.render(`home/login`);
   },
+  register: (req, res) => {
+    res.render(`home/register`);
+  },
 };
 
 const process = {
   login: (req, res) => {
-    const id = req.body.userid;
-    const password = req.body.userpassword;
-
-    if (users.userid.includes(id)) {
-      const idx = users.userid.indexOf(id);
-      if (users.userpassword[idx] === password) {
-        return res.json({
-          success: true,
-        });
-      }
-    }
-
-    return res.json({
-      success: false,
-      msg: "login fail",
-    });
+    const user = new User(req.body);
+    const response = user.login();
+    return res.json(response);
+  },
+  register: (req, res) => {
+    const user = new User(req.body);
+    const response = user.register();
+    return res.json(response);
   },
 };
 
