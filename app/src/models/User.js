@@ -16,7 +16,7 @@ class User {
       }
       return { success: false, msg: "존자하지않는 아이디" };
     } catch (err) {
-      return { success: false, msg: err };
+      return { success: false, err };
     }
   }
   async register() {
@@ -25,7 +25,7 @@ class User {
       const response = await UserStorage.save(client);
       return response;
     } catch (err) {
-      return { success: false, msg: err };
+      return { success: false, err };
     }
   }
 }

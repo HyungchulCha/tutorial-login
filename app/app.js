@@ -18,6 +18,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const morgan = require("morgan");
+const logger = require("./src/config/logger");
 const accessLogStream = require("./src/config/log");
 const home = require("./src/routes/home");
 // const logger = require("./src/config/logger");
@@ -28,7 +29,8 @@ app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(`${__dirname}/src/public`));
-app.use(morgan("dev", { stream: accessLogStream }));
+// app.use(morgan("dev", { stream: accessLogStream }));
+app.use(morgan("tiny", { stream: logger.stream }));
 
 app.use("/", home);
 

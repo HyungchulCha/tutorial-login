@@ -41,7 +41,7 @@ class UserStorage {
     return new Promise((res, rej) => {
       db.query(query, [userid], (err, data) => {
         if (err) rej(err);
-        res(data[0]);
+        else res(data[0]);
       });
     });
   }
@@ -63,7 +63,7 @@ class UserStorage {
         [userInfo.userid, userInfo.username, userInfo.userpassword],
         (err, data) => {
           if (err) rej(`{err}`);
-          res({ success: true });
+          else res({ success: true });
         }
       );
     });
