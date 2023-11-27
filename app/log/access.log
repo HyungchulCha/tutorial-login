@@ -10,3 +10,8 @@
 [0mGET /favicon.ico [33m404[0m 0.743 ms - 150[0m
 [0mGET / [32m200[0m 1.748 ms - 222[0m
 [0mGET /favicon.ico [33m404[0m 0.549 ms - 150[0m
+[0mGET / [32m200[0m 11.069 ms - 222[0m
+[0mGET /favicon.ico [33m404[0m 2.468 ms - 150[0m
+[0mGET / [36m304[0m 3.024 ms - -[0m
+[0mGET /login [36m304[0m 2.917 ms - -[0m
+[0mGET / [36m304[0m 11.346 ms - -[0m

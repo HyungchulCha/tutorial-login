@@ -20,6 +20,8 @@ const app = express();
 const morgan = require("morgan");
 const accessLogStream = require("./src/config/log");
 const home = require("./src/routes/home");
+// const logger = require("./src/config/logger");
+// logger.error("hello");
 
 app.set("views", "./src/views");
 app.set("view engine", "ejs");
