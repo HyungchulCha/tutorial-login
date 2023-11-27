@@ -39,5 +39,5 @@ function fnregister() {
         alert(res.msg);
       }
     })
-    .catch((e) => console.error(new Error("Login Error")));
+    .catch((e) => console.error(new Error("Register Error")));
 }

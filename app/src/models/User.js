@@ -4,21 +4,29 @@ class User {
   constructor(body) {
     this.body = body;
   }
-  login() {
-    const bd = this.body;
-    const { id, password } = UserStorage.getUserInfo(bd.userid);
-    if (id) {
-      if (id === bd.userid && password === bd.userpassword) {
-        return { success: true };
-      }
-      return { success: false, msg: "비밀번호 틀림" };
-    }
-    return { success: false, msg: "존자하지않는 아이디" };
-  }
-  register() {
+  async login() {
     const client = this.body;
-    const response = UserStorage.save(client)
-    return response
+    try {
+      const { id, password } = await UserStorage.getUserInfo(client.userid);
+      if (id) {
+        if (id === client.userid && password === client.userpassword) {
+          return { success: true };
+        }
+        return { success: false, msg: "비밀번호 틀림" };
+      }
+      return { success: false, msg: "존자하지않는 아이디" };
+    } catch (err) {
+      return { success: false, msg: err };
+    }
+  }
+  async register() {
+    const client = this.body;
+    try {
+      const response = await UserStorage.save(client);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err };
+    }
   }
 }
 
